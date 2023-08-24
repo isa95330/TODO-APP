@@ -36,14 +36,8 @@ const jsm = jsonServer.router('db.json');
  * Ici, on crée une application Express qui va utiliser le Middleware json-server.
  * Cela signifie que toutes les requêtes reçues par notre serveur seront traitées par le Middleware json-server.
  */
-const app = express('');
+const app = express();
 
-
-
-app.get('/martin', (req, res)=>{
-    res.send('Coucou Martin');
-})
-app.listen(3000, () => console.log('Le serveur est lancé sur le port 3000'));
 
 // ------------------ APP USE AND SET ------------------ //
 
@@ -70,6 +64,7 @@ app.use('/api', jsm);
  * Ici, on va utiliser le moteur de template EJS. 
  */
 app.set('view engine', 'ejs');
+
 
 // ------------------ ROUTES ------------------ //
 
@@ -117,7 +112,10 @@ app.get('/tasks/delete/:id', (req, res) => { // On définit la route "/tasks/del
 });
 
 
+// ------------------ SERVER ------------------ //
 
-
-
-
+/**
+ * Ici, on indique que l'on veut que le serveur écoute les requêtes reçues sur le port 3000.
+ * Cela signifie que notre serveur va pouvoir recevoir des requêtes à l'adresse "http://localhost:3000".
+ */
+app.listen(3000, () => console.log('Le serveur est lancé sur le port 3000'));

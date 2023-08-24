@@ -79,9 +79,10 @@ app.get('/', (req, res) => {
  * On va retourner une vue en ejs pour la route "/tasks".
  */
 app.get('/tasks', (req, res) => {
-    const tasks = JSON.parse(fs.readFileSync('db.json')).tasks; // On récupère les tâches dans le fichier JSON.
-    res.render('tasks', { tasks }); // On retourne la vue "tasks.ejs" en lui passant les tâches en paramètre.
-});
+    const tasks = JSON.parse(fs.readFileSync('db.json')).tasks // On récupère les tâches dans le fichier JSON.
+   let message = 'TEST'
+    res.render('tasks', { tasks, message }) // On retourne la vue "tasks.ejs" en lui passant les tâches en paramètre.
+})
 
 /**
  * Création d'une nouvelle tâche.
